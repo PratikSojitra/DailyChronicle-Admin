@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Provider } from "react-redux";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
     const [queryClient] = useState(() => new QueryClient());
@@ -21,7 +22,9 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
                     disableTransitionOnChange
                 >
                     <AuthGuard>
-                        {children}
+                        <TooltipProvider>
+                            {children}
+                        </TooltipProvider>
                     </AuthGuard>
                     <Toaster richColors position="top-right" />
                 </ThemeProvider>

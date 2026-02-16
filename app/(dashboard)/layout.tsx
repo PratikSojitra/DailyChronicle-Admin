@@ -1,5 +1,4 @@
-import Header from "@/components/common/Header";
-import Sidebar from "@/components/common/Sidebar";
+import AppSidebar from "@/components/shadcn-space/blocks/dashboard-shell-01/app-sidebar";
 
 export default function DashboardLayout({
     children,
@@ -7,10 +6,8 @@ export default function DashboardLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div>
-            <Header />
-            <Sidebar />
+        <AppSidebar>
             {children}
-        </div>
+        </AppSidebar>
     )
 }

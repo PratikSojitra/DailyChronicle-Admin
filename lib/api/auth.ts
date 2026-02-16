@@ -3,11 +3,8 @@ import { AuthResponse, LoginInputs, SignupInputs } from "../types/auth";
 
 export const authApi = {
     login: async (credentials: LoginInputs): Promise<AuthResponse> => {
-        const { data } = await api.post<AuthResponse>('/auth/login', credentials);
+        const { data } = await api.post<AuthResponse>('/auth/admin-login', credentials);
         return data;
-    },
-    signup: async (credentials: SignupInputs): Promise<void> => {
-        await api.post('/auth/signup', credentials);
     },
     forgotPassword: async (email: string): Promise<void> => {
         await api.post('/auth/forgot-password', { email });

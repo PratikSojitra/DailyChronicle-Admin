@@ -32,15 +32,6 @@ export const useLogin = () => {
     })
 }
 
-export const useSignup = () => {
-    const router = useRouter();
-    return useMutation({
-        mutationFn: (data: SignupInputs) => authApi.signup(data),
-        onSuccess: () => {
-            router.push('/login');
-        },
-    });
-}
 
 export const useLogout = () => {
     const dispatch = useDispatch();
