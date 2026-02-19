@@ -57,7 +57,7 @@ const AppSidebar = ({ children }: { children: React.ReactNode }) => {
                         <SidebarMenu>
                             <SidebarMenuItem>
                                 <Link href="/dashboard" className="w-full h-full">
-                                    <Image src={logo} alt="Daily Chronicle" width={202} height={34} />
+                                    <Image src={logo} alt="Daily Chronicle" className="mx-auto" width={202} height={34} />
                                 </Link>
                             </SidebarMenuItem>
                         </SidebarMenu>

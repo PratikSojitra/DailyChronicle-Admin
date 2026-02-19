@@ -1,9 +1,16 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { DataTable } from "@/components/ui/data-table"
+import { AddCategoryModal } from "../../../../components/categories/add-category-modal"
+import { useState } from "react"
+import { useCategories } from "@/lib/hooks/useCategories"
 
 
 const CategoriesPage = () => {
+
+    const [open, setOpen] = useState(false)
+
+    const { data: categories } = useCategories()
 
     const columns = [
         {
@@ -42,23 +49,16 @@ const CategoriesPage = () => {
         }
     ]
 
-    const data = [
-        {
-            name: "John Doe",
-            slug: "john-doe",
-            postCount: 10,
-        },
-        {
-            name: "Jane Doe 2",
-            slug: "jane-doe-2",
-            postCount: 20,
-        },
-    ]
-
     return (
         <div className="px-[24px] py-[24px] h-[calc(100vh-64px)] overflow-y-auto">
-            <h1 className="text-2xl font-semibold">Categories</h1>
-            <DataTable columns={columns} data={data} />
+            <AddCategoryModal onClose={() => setOpen(false)} open={open} />
+            <div className="flex items-center justify-between">
+                <h1 className="text-2xl font-semibold">Categories</h1>
+                <Button variant="outline" size="sm" onClick={() => setOpen(true)}>
+                    Add Category
+                </Button>
+            </div>
+            <DataTable columns={columns} data={categories || []} hideViewColumn />
         </div>
     )
 }

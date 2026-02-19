@@ -39,6 +39,7 @@ interface DataTableProps<TData, TValue> {
     data: TData[]
     searchKey?: string
     pageSizeOptions?: number[]
+    hideViewColumn?: boolean
 }
 
 export function DataTable<TData, TValue>({
@@ -46,6 +47,7 @@ export function DataTable<TData, TValue>({
     data,
     searchKey,
     pageSizeOptions = [10, 20, 30, 40, 50],
+    hideViewColumn = false,
 }: DataTableProps<TData, TValue>) {
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -92,7 +94,7 @@ export function DataTable<TData, TValue>({
                         </div>
                     </div>
                 )}
-                <DropdownMenu>
+                {!hideViewColumn && <DropdownMenu>
                     <DropdownMenuTrigger className="ml-auto inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">
                         <SlidersHorizontal className="mr-2 h-4 w-4" />
                         View
@@ -116,7 +118,7 @@ export function DataTable<TData, TValue>({
                                 )
                             })}
                     </DropdownMenuContent>
-                </DropdownMenu>
+                </DropdownMenu>}
             </div>
             <div className="rounded-md border">
                 <Table>
