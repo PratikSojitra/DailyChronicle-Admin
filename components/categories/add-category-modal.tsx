@@ -11,7 +11,7 @@ import { categorySchema, CategoryInputs, Category } from "@/lib/types/categories
 import { zodResolver } from "@hookform/resolvers/zod"
 import slugify from "slugify"
 
-export function AddCategoryModal({ open, onClose, refetch }: { open: boolean, onClose: () => void, refetch: () => void }) {
+export function AddCategoryModal({ open, onClose }: { open: boolean, onClose: () => void }) {
 
     const { register, handleSubmit, reset, formState: { errors }, watch } = useForm<Category>({
         resolver: zodResolver(categorySchema),
